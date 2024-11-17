@@ -1,13 +1,13 @@
 <?php
 
-use App\Http\Controllers\StudentController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [StudentController::class, 'index'])->name('students.index');
-Route::get('/create', [StudentController::class, 'create'])->name('students.create');
-Route::post('/store', [StudentController::class, 'store'])->name('students.store');
-Route::get('/{id}', [StudentController::class, 'show'])->name('students.show');
-Route::get('/{id}/edit', [StudentController::class, 'edit'])->name('students.edit');
-Route::put('/{id}', [StudentController::class, 'update'])->name('students.update');
-Route::delete('/{id}', [StudentController::class, 'destroy'])->name('students.destroy');
+Route::get('/', [ProductsController::class, 'index'])->name('products.index');
+Route::get('/create', [ProductsController::class, 'create'])->name('products.create');
+Route::post('/store', [ProductsController::class, 'store'])->name('products.store');
+Route::get('/{id}', [ProductsController::class, 'show'])->name('products.show');
+Route::get('/{id}/edit', [ProductsController::class, 'edit'])->name('products.edit');
+Route::put('/{id}', [ProductsController::class, 'update'])->name('products.update');
+Route::delete('/{id}', [ProductsController::class, 'destroy'])->name('products.destroy');
 
