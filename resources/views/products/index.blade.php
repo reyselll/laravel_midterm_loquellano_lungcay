@@ -6,6 +6,10 @@
     <title>Products</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
+        body {
+            background-color: #cda548; /* Black background */
+            color: #fff; /* White text for body */
+        }
         .product-img {
             max-width: 100px;
             max-height: 100px;
@@ -15,15 +19,66 @@
             vertical-align: middle;
         }
         .logo {
+            width: 170px;
+            height: auto;
             position: absolute;
             top: 20px;
-            left: 20px;
-            max-height: 200px;
+            right: 20px;
+            z-index: 1000;
+        }
+        /* Table Styles */
+        .table {
+            border-color: #8B4513; /* Brown border */
+        }
+        .table th {
+            background-color: #8B4513; /* Brown header */
+            color: white; /* White text in table header */
+        }
+        .table-striped tbody tr:nth-child(odd) {
+            background-color: #e1dada; /* Dark grey for odd rows */
+        }
+        .table-bordered th, .table-bordered td {
+            border: 1px solid #8B4513; /* Brown border */
+        }
+
+        /* Button Styles */
+        .btn-primary {
+            background-color: #8B4513; /* Brown for primary button */
+            border-color: #8B4513;
+        }
+        .btn-primary:hover {
+            background-color: #6a3e1b; /* Darker brown on hover */
+            border-color: #6a3e1b;
+        }
+        .btn-info {
+            background-color: #2c1414; /* Dark grey for info button */
+            border-color: #1d1212;
+        }
+        .btn-warning {
+            background-color: #b46236; /* Gold for warning button */
+            border-color: #bf5b29;
+        }
+        .btn-danger {
+            background-color: #a10000; /* Red for danger button */
+            border-color: #a10000;
+        }
+        /* Button Hover Effects */
+        .btn-info:hover {
+            background-color: #321f1f;
+            border-color: #4a2121;
+        }
+        .btn-warning:hover {
+            background-color: #b88e00;
+            border-color: #b88e00;
+        }
+        .btn-danger:hover {
+            background-color: #8b0000;
+            border-color: #8b0000;
         }
     </style>
 </head>
 <body>
-    <img src="{{ asset('jetian.png') }}" alt="Logo" class="logo">
+    <img src="{{ asset('logo.png') }}" alt="Logo" class="logo">
 
     <div class="container mt-4">
         <h1 class="mb-4">Products</h1>
@@ -34,12 +89,12 @@
         @endif
 
         <div class="table-responsive">
-            <table class="table table-bordered table-hover">
-                <thead class="thead-dark">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
                     <tr>
                         <th>Image</th>
                         <th>Product Name</th>
-                        <th>Amount</th>
+                        <th>Quantity</th>
                         <th>Price</th>
                         <th>Actions</th>
                     </tr>
@@ -55,7 +110,7 @@
                                 @endif
                             </td>
                             <td>{{ $product->prod_name }}</td>
-                            <td>{{ $product->amount }}</td>
+                            <td>{{ $product->quantity }}</td>
                             <td>₱{{ number_format($product->price, 2) }}</td>
                             <td>
                                 <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm">View</a>
